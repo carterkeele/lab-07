@@ -2,7 +2,7 @@
 
 ## Student Details
 - **Full Name:** `Carter Keele`
-- **CCID:** `Keele`
+- **CCID:** `keele`
 
 ## References and Resources
 List any resources used here, or simply put `N/A` if not applicable.
