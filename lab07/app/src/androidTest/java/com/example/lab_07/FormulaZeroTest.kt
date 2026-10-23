@@ -52,4 +52,44 @@ class FormulaZeroTest {
             .onNodeWithText("FormulaZero Home")
             .assertExists()
     }
+
+    @Test
+    fun navigate_from_home_to_drivers() {
+        composeTestRule.onNodeWithTag("driversButton").performClick()
+
+        composeTestRule.onNodeWithText("FormulaZero Drivers").assertExists()
+    }
+
+    @Test
+    fun add_driver_displays_in_list() {
+        composeTestRule.onNodeWithTag("driversButton").performClick()
+
+        composeTestRule.onNodeWithTag("driverInput").performTextInput("Hamilton")
+        composeTestRule.onNodeWithTag("addDriverButton").performClick()
+
+        composeTestRule.onNodeWithText("Hamilton").assertExists()
+    }
+
+    @Test
+    fun clear_drivers_removes_them_from_list() {
+        composeTestRule.onNodeWithTag("driversButton").performClick()
+
+        composeTestRule.onNodeWithTag("driverInput").performTextInput("Hamilton")
+        composeTestRule.onNodeWithTag("addDriverButton").performClick()
+        composeTestRule.onNodeWithText("Hamilton").assertExists()
+
+        composeTestRule.onNodeWithTag("clearDriversButton").performClick()
+
+        composeTestRule.onNodeWithText("Hamilton").assertDoesNotExist()
+    }
+
+    @Test
+    fun drivers_back_button_returns_home() {
+        composeTestRule.onNodeWithTag("driversButton").performClick()
+        composeTestRule.onNodeWithText("FormulaZero Drivers").assertExists()
+
+        composeTestRule.onNodeWithTag("driversBackButton").performClick()
+
+        composeTestRule.onNodeWithText("FormulaZero Home").assertExists()
+    }
 }
